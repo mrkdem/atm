@@ -2,7 +2,8 @@ package com.intive.atm.services;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
@@ -45,9 +46,9 @@ public class AtmServiceTest {
 
         //then
         assertThat(addedCustomer, notNullValue());
-        assertEquals("joe.doe", addedCustomer.getUsername());
+        assertThat(addedCustomer.getUsername(), is(equalTo("joe.doe")));
         assertThat(addedCustomer.getAccount(), notNullValue());
-        assertEquals(6666, addedCustomer.getAccount().getAccountNumber());
+        assertThat(addedCustomer.getAccount().getAccountNumber(), is(equalTo(6666)));
     }
 
     @Test
@@ -87,7 +88,7 @@ public class AtmServiceTest {
 
         //then
         assertTrue(isDeposited);
-        assertEquals(31000, account.getBalance(), 0);
+        assertThat(account.getBalance(), is(equalTo(31000.0)));
     }
 
     @Test
@@ -103,7 +104,7 @@ public class AtmServiceTest {
 
         //then
         assertTrue(isTranferred);
-        assertEquals(18500, accountFrom.getBalance(), 0);
-        assertEquals(11500, accountTo.getBalance(), 0);
+        assertThat(accountFrom.getBalance(), is(equalTo(18500.0)));
+        assertThat(accountTo.getBalance(), is(equalTo(11500.0)));
     }
 }

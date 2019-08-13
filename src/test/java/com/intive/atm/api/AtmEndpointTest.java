@@ -3,7 +3,6 @@ package com.intive.atm.api;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -80,7 +79,7 @@ public class AtmEndpointTest {
         assertThat(withdrawResponseEntity.getBody(), is(equalTo(Boolean.TRUE)));
 
         assertThat(accountResponseEntity.getStatusCode(), is(equalTo(HttpStatus.OK)));
-        assertEquals(9000, accountResponseEntity.getBody().getBalance(), 0);
+        assertThat(accountResponseEntity.getBody().getBalance(), is(equalTo(9000.0)));
     }
 
     @Test
@@ -103,6 +102,6 @@ public class AtmEndpointTest {
         assertThat(changeLimitResponseEntity.getBody(), is(equalTo(Boolean.TRUE)));
 
         assertThat(accountResponseEntity.getStatusCode(), is(equalTo(HttpStatus.OK)));
-        assertEquals(3000, accountResponseEntity.getBody().getLimit(), 0);
+        assertThat(accountResponseEntity.getBody().getLimit(), is(equalTo(3000.0)));
     }
 }
