@@ -1,13 +1,14 @@
 package com.intive.atm.exeptions;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 import org.springframework.http.HttpStatus;
 
 public enum AtmErrorCode {
 
-    ERROR_CUSTOMER_NOT_FOUND("01", INTERNAL_SERVER_ERROR),
-    ERROR_ACCOUNT_NOT_FOUND("02", INTERNAL_SERVER_ERROR),
+    ERROR_CUSTOMER_NOT_FOUND("01", NOT_FOUND),
+    ERROR_ACCOUNT_NOT_FOUND("02", NOT_FOUND),
     ERROR_ACCOUNT_WITHDRAWAL("03", INTERNAL_SERVER_ERROR);
 
     private String code;
